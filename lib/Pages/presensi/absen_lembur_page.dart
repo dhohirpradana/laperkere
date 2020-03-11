@@ -408,7 +408,7 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
                 Navigator.pop(context);
               } else if (value == 0) {
                 Fluttertoast.showToast(
-                    msg: "BELUM MASANYA MENGISI PRESENSI",
+                    msg: "BUKAN MASANYA MENGISI PRESENSI",
                     toastLength: Toast.LENGTH_SHORT,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
