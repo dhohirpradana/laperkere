@@ -18,6 +18,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:situsa/api/api.dart';
 
+import '../login_page.dart';
+
 class PerekamanLemburPage extends StatefulWidget {
   @override
   _PerekamanPageState createState() => _PerekamanPageState();
@@ -41,6 +43,13 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
       token = preferences.getString("token");
     });
     print("$id, $token");
+  }
+
+  resetSavePref(int value) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", value);
+    });
   }
 
   uploadData() async {
@@ -367,70 +376,78 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
           try {
             final streamedResponse = await imageUploadRequest.send();
             final response = await http.Response.fromStream(streamedResponse);
-            final data = json.decode(response.body);
-            int value = data['value'];
-            print(value);
-            if (value == 2) {
-              setState(() {
-                _imageList.clear();
-              });
-              Fluttertoast.showToast(
-                  msg: "ANDA SUDAH MENGISI PRESENSI",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIos: 1,
-                  backgroundColor: Colors.green.withOpacity(0.9),
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              Navigator.pop(context);
-            } else if (value == 1) {
-              setState(() {
-                _imageList.clear();
-              });
-              Fluttertoast.showToast(
-                  msg: "BERHASIL MENGISI PRESENSI",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIos: 1,
-                  backgroundColor: Colors.blue.withOpacity(0.9),
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              Navigator.pop(context);
-            } else if (value == 0) {
-              Fluttertoast.showToast(
-                  msg: "BELUM MASANYA MENGISI PRESENSI",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIos: 1,
-                  backgroundColor: Colors.red.withOpacity(0.9),
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              Navigator.pop(context);
-            } else {
-              Fluttertoast.showToast(
-                  msg: "SISTEM SEDANG MAIN TENIS",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.TOP,
-                  timeInSecForIos: 1,
-                  backgroundColor: Colors.red.withOpacity(0.9),
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              Navigator.pop(context);
-            }
+            if (response.statusCode == 200) {
+              final data = json.decode(response.body);
+              int value = data['value'];
+              print(value);
+              if (value == 2) {
+                setState(() {
+                  _imageList.clear();
+                });
+                Fluttertoast.showToast(
+                    msg: "ANDA SUDAH MENGISI PRESENSI",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIos: 1,
+                    backgroundColor: Colors.green.withOpacity(0.9),
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                Navigator.pop(context);
+              } else if (value == 1) {
+                setState(() {
+                  _imageList.clear();
+                });
+                Fluttertoast.showToast(
+                    msg: "BERHASIL MENGISI PRESENSI",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIos: 1,
+                    backgroundColor: Colors.blue.withOpacity(0.9),
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                Navigator.pop(context);
+              } else if (value == 0) {
+                Fluttertoast.showToast(
+                    msg: "BELUM MASANYA MENGISI PRESENSI",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIos: 1,
+                    backgroundColor: Colors.red.withOpacity(0.9),
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                Navigator.pop(context);
+              } else {
+                Fluttertoast.showToast(
+                    msg: "SISTEM SEDANG MAIN TENIS",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.TOP,
+                    timeInSecForIos: 1,
+                    backgroundColor: Colors.red.withOpacity(0.9),
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+                Navigator.pop(context);
+              }
 
-            // Fluttertoast.showToast(
-            //     msg: "SISTEM SEDANG MAIN TENIS",
-            //     toastLength: Toast.LENGTH_SHORT,
-            //     gravity: ToastGravity.BOTTOM,
-            //     timeInSecForIos: 1,
-            //     backgroundColor: Colors.red.withOpacity(0.9),
-            //     textColor: Colors.white,
-            //     fontSize: 16.0);
-            // Navigator.pop(context);
-            final Map<String, dynamic> responseData =
-                json.decode(response.body);
-            _resetState();
-            return responseData;
+              // Fluttertoast.showToast(
+              //     msg: "SISTEM SEDANG MAIN TENIS",
+              //     toastLength: Toast.LENGTH_SHORT,
+              //     gravity: ToastGravity.BOTTOM,
+              //     timeInSecForIos: 1,
+              //     backgroundColor: Colors.red.withOpacity(0.9),
+              //     textColor: Colors.white,
+              //     fontSize: 16.0);
+              // Navigator.pop(context);
+              final Map<String, dynamic> responseData =
+                  json.decode(response.body);
+              _resetState();
+              return responseData;
+            } else {
+              setState(() {
+                resetSavePref(0);
+              });
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginPageKu()));
+            }
           } catch (e) {
             print(e);
             return null;

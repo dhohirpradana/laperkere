@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:situsa/Pages/login_page.dart';
 import 'package:situsa/api/api.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
       jabatan,
       status_tenaga,
       unit_kerja;
-      
+
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
@@ -41,27 +42,42 @@ class _ProfilePageState extends State<ProfilePage> {
     getProfile();
   }
 
+  resetSavePref(int value) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", value);
+    });
+  }
+
   int isLoading = 1;
   getProfile() async {
     var response = await http.get(Uri.encodeFull(BaseUrl.profile), headers: {
       HttpHeaders.authorizationHeader: "bearer $token",
       'Accept': 'application-json'
     });
-    final data = jsonDecode(response.body);
-    // print(response.body);
-    setState(() {
-      no_thl = data['no_thl'];
-      nama = data['name'];
-      tmt_pengangkatan_pertama = data['tmt_pengangkatan_pertama'];
-      tempat_lahir = data['tempat_lahir'];
-      tanggal_lahir = data['tanggal_lahir'];
-      tingkat_pendidikan_terakhir = data['tingkat_pendidikan_terakhir'];
-      jurusan_pendidikan_terakhir = data['jurusan_pendidikan_terakhir'];
-      jabatan = data['jabatan'];
-      status_tenaga = data['status_tenaga'];
-      unit_kerja = data['unit_kerja'];
-      isLoading = 0;
-    });
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      // print(response.body);
+      setState(() {
+        no_thl = data['no_thl'];
+        nama = data['name'];
+        tmt_pengangkatan_pertama = data['tmt_pengangkatan_pertama'];
+        tempat_lahir = data['tempat_lahir'];
+        tanggal_lahir = data['tanggal_lahir'];
+        tingkat_pendidikan_terakhir = data['tingkat_pendidikan_terakhir'];
+        jurusan_pendidikan_terakhir = data['jurusan_pendidikan_terakhir'];
+        jabatan = data['jabatan'];
+        status_tenaga = data['status_tenaga'];
+        unit_kerja = data['unit_kerja'];
+        isLoading = 0;
+      });
+    } else {
+      setState(() {
+        resetSavePref(0);
+      });
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginPageKu()));
+    }
   }
 
   @override

@@ -73,7 +73,7 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "SABTU BERSIH",
+                            "SAPU BERSIH",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
