@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:situsa/Pages/login_page.dart';
 import 'package:situsa/api/api.dart';
 
 class RiwayatKerjaPage extends StatefulWidget {
@@ -16,6 +17,13 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
   void initState() {
     super.initState();
     getPref();
+  }
+
+  resetSavePref(int value) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      preferences.setInt("value", value);
+    });
   }
 
   int id;
@@ -37,12 +45,21 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
       HttpHeaders.authorizationHeader: "bearer $token",
       'Accept': 'application-json'
     });
-    data = jsonDecode(response.body);
-    print(data);
-    print(response.statusCode);
-    setState(() {
-      isLoading = 0;
-    });
+
+    if (response.statusCode == 200) {
+      data = jsonDecode(response.body);
+      print(data);
+      print(response.statusCode);
+      setState(() {
+        isLoading = 0;
+      });
+    } else {
+      setState(() {
+        resetSavePref(0);
+      });
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginPageKu()));
+    }
   }
 
   @override
