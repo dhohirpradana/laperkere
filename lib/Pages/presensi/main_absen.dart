@@ -26,7 +26,14 @@ class _MainAbsenPageState1 extends State<MainPresensiPage1> {
         ),
         backgroundColor: Color(0xff037171),
       ),
-      body: body(),
+      body: Stack(
+        children: <Widget>[
+          Container(
+            color: Colors.blueGrey.withOpacity(0.17),
+          ),
+          body(),
+        ],
+      ),
     );
   }
 
@@ -37,8 +44,10 @@ class _MainAbsenPageState1 extends State<MainPresensiPage1> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Material(
+              borderRadius: BorderRadius.circular(15),
               elevation: 10,
               child: InkWell(
+                borderRadius: BorderRadius.circular(15),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => PerekamanPage()));
@@ -60,11 +69,13 @@ class _MainAbsenPageState1 extends State<MainPresensiPage1> {
               ),
             ),
             SizedBox(
-              height: 25,
+              height: 19,
             ),
             Material(
+              borderRadius: BorderRadius.circular(15),
               elevation: 10,
               child: InkWell(
+                borderRadius: BorderRadius.circular(15),
                 onTap: () {
                   Navigator.push(
                       context,

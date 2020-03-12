@@ -76,9 +76,15 @@ class _PerekamanPageState extends State<PerekamanPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          "PRESENSI",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              "PRESENSI",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            Icon(Icons.assignment),
+          ],
         ),
         backgroundColor: Color(0xff037171),
       ),

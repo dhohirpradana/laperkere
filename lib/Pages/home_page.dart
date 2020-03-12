@@ -108,15 +108,19 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                     Flexible(
                       flex: 1,
                       child: Container(
-                        margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height / 15),
-                        width: MediaQuery.of(context).size.width / 5.5,
-                        child: Icon(
-                          Icons.person,
-                          size: MediaQuery.of(context).size.width / 6,
-                          color: Colors.blueGrey,
-                        ),
-                      ),
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 15),
+                          width: MediaQuery.of(context).size.width / 6.3,
+                          child:
+                              // Icon(
+                              //   Icons.person,
+                              //   size: MediaQuery.of(context).size.width / 6.5,
+                              //   color: Color(0xff037171),
+                              // ),
+                              Container(
+                            child: Image(
+                                image: AssetImage('lib/assets/green.png')),
+                          )),
                     ),
                     Flexible(
                       flex: 1,
@@ -151,7 +155,7 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                                                   .size
                                                   .width /
                                               6,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff037171),
                                         ),
                                         Text("PRESENSI",
                                             style: TextStyle(
@@ -189,7 +193,7 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                                                   .size
                                                   .width /
                                               6,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff037171),
                                         ),
                                         Column(
                                           children: <Widget>[
@@ -252,12 +256,12 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Icon(
-                                          Icons.person_outline,
+                                          Icons.person,
                                           size: MediaQuery.of(context)
                                                   .size
                                                   .width /
                                               6,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff037171),
                                         ),
                                         Text("PROFILE",
                                             style: TextStyle(
@@ -292,7 +296,7 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                                                   .size
                                                   .width /
                                               6,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff037171),
                                         ),
                                         Text("LOGOUT",
                                             style: TextStyle(
@@ -396,8 +400,8 @@ class DragItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Icon(
       Icons.donut_small,
-      size: MediaQuery.of(context).size.width / 13,
-      color: Colors.orange,
+      size: MediaQuery.of(context).size.width / 12,
+      color: Colors.redAccent,
     );
   }
 }

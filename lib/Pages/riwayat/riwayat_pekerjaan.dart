@@ -86,6 +86,11 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
               ? 0
               : (data.length > 505) ? 500 : data["data"].length,
           itemBuilder: (BuildContext context, int index) {
+            final waktu = data["data"][index]["time"];
+            final tahun = waktu.substring(0, 4);
+            final bulan = waktu.substring(5, 7);
+            final tanggal = waktu.substring(8, 10);
+            final jam = waktu.substring(11, 16);
             return Card(
               child: InkWell(
                 splashColor: Colors.blue[300],
@@ -99,7 +104,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                       return AlertDialog(
                         title: Text(
                           "DETAIL RIWAYAT PEKERJAAN",
-                          style: TextStyle(color: Colors.blue.withOpacity(0.9)),
+                          style: TextStyle(color: Colors.blueGrey.withOpacity(0.9)),
                         ),
                         content: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,13 +115,13 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                                 Container(
                                   margin: EdgeInsets.all(5),
                                   child: Text(
-                                    data["data"][index]["time"],
+                                    "$tanggal - $bulan - $tahun, $jam",
                                     style: TextStyle(
                                         fontSize:
                                             MediaQuery.of(context).size.width /
                                                 25,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.redAccent),
+                                        color: Colors.purpleAccent),
                                   ),
                                 ),
                                 Text(
