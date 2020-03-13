@@ -91,6 +91,30 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
             final bulan = waktu.substring(5, 7);
             final tanggal = waktu.substring(8, 10);
             final jam = waktu.substring(11, 16);
+
+            final namab = (bulan == "01")
+                ? "Jan"
+                : (bulan == "02")
+                    ? "Feb"
+                    : (bulan == "03")
+                        ? "Mar"
+                        : (bulan == "04")
+                            ? "Apr"
+                            : (bulan == "05")
+                                ? "Mei"
+                                : (bulan == "06")
+                                    ? "Jun"
+                                    : (bulan == "07")
+                                        ? "Jul"
+                                        : (bulan == "08")
+                                            ? "Agst"
+                                            : (bulan == "09")
+                                                ? "Sep"
+                                                : (bulan == "10")
+                                                    ? "Okt"
+                                                    : (bulan == "11")
+                                                        ? "Nov"
+                                                        : "Des";
             return Card(
               child: InkWell(
                 splashColor: Colors.blue[300],
@@ -104,7 +128,8 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                       return AlertDialog(
                         title: Text(
                           "DETAIL RIWAYAT PEKERJAAN",
-                          style: TextStyle(color: Colors.blueGrey.withOpacity(0.9)),
+                          style: TextStyle(
+                              color: Colors.blueGrey.withOpacity(0.9)),
                         ),
                         content: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,11 +140,11 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                                 Container(
                                   margin: EdgeInsets.all(5),
                                   child: Text(
-                                    "$tanggal - $bulan - $tahun, $jam",
+                                    "$tanggal $namab $tahun, $jam",
                                     style: TextStyle(
                                         fontSize:
                                             MediaQuery.of(context).size.width /
-                                                25,
+                                                23,
                                         fontWeight: FontWeight.w400,
                                         color: Colors.purpleAccent),
                                   ),
@@ -160,7 +185,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                           // usually buttons at the bottom of the dialog
                           FlatButton(
                             child: Text(
-                              "Tutup",
+                              "TUTUP",
                               style: TextStyle(
                                   fontSize:
                                       MediaQuery.of(context).size.width / 23,
@@ -183,17 +208,27 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                       bottom: MediaQuery.of(context).size.width / 21),
                   child: Row(
                     children: <Widget>[
-                      Text((index + 1).toString()),
+                      Text((index + 1).toString(),
+                          style: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.width / 23)),
                       SizedBox(
                         width: 10,
                         child: Text("."),
                       ),
-                      Text(data["data"][index]["time"]),
+                      Text(
+                        data["data"][index]["time"],
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width / 23),
+                      ),
                       SizedBox(
                         width: 15,
                       ),
                       Expanded(
                         child: Text(data["data"][index]["lokasi"],
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 23),
                             overflow: TextOverflow.ellipsis),
                       ),
                     ],

@@ -111,16 +111,14 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                           margin: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height / 15),
                           width: MediaQuery.of(context).size.width / 6.3,
-                          child:
-                              // Icon(
-                              //   Icons.person,
-                              //   size: MediaQuery.of(context).size.width / 6.5,
-                              //   color: Color(0xff037171),
-                              // ),
-                              Container(
-                            child: Image(
-                                image: AssetImage('lib/assets/green.png')),
-                          )),
+                          child: Container(
+                              child: Icon(Icons.people,
+                                  size: MediaQuery.of(context).size.width / 7,
+                                  color: Color(0xff037171))
+                              // Image(
+                              //     image: AssetImage('lib/assets/bio.png')),
+
+                              )),
                     ),
                     Flexible(
                       flex: 1,
@@ -319,30 +317,30 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                 ),
               ),
             ),
-            Container(
-              child: Draggable(
-                child: Container(
-                  padding: EdgeInsets.only(top: top, left: left),
-                  child: DragItem(),
-                ),
-                feedback: Container(
-                  padding: EdgeInsets.only(top: top, left: left),
-                  child: DragItem(),
-                ),
-                childWhenDragging: Container(
-                  padding: EdgeInsets.only(top: top, left: left),
-                  child: SizedBox(),
-                ),
-                onDragCompleted: () {},
-                onDragEnd: (drag) {
-                  setState(() {
-                    top = top + drag.offset.dy < 0 ? 0 : top + drag.offset.dy;
-                    left =
-                        left + drag.offset.dx < 0 ? 0 : left + drag.offset.dx;
-                  });
-                },
-              ),
-            ),
+            // Container(
+            //   child: Draggable(
+            //     child: Container(
+            //       padding: EdgeInsets.only(top: top, left: left),
+            //       child: DragItem(),
+            //     ),
+            //     feedback: Container(
+            //       padding: EdgeInsets.only(top: top, left: left),
+            //       child: DragItem(),
+            //     ),
+            //     childWhenDragging: Container(
+            //       padding: EdgeInsets.only(top: top, left: left),
+            //       child: SizedBox(),
+            //     ),
+            //     onDragCompleted: () {},
+            //     onDragEnd: (drag) {
+            //       setState(() {
+            //         top = top + drag.offset.dy < 0 ? 0 : top + drag.offset.dy;
+            //         left =
+            //             left + drag.offset.dx < 0 ? 0 : left + drag.offset.dx;
+            //       });
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
