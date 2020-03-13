@@ -29,7 +29,7 @@ class _MainAbsenPageState1 extends State<MainPresensiPage1> {
       body: Stack(
         children: <Widget>[
           Container(
-            color: Colors.blueGrey.withOpacity(0.17),
+            color: Colors.blueGrey.withOpacity(0.1),
           ),
           body(),
         ],

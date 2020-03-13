@@ -82,44 +82,41 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
       ),
       body: Material(
         child: ListView.builder(
-          itemCount: data == null
-              ? 0
-              : (data.length > 505) ? 500 : data["data"].length,
+          itemCount: data == null ? 0 : data["data"].length,
           itemBuilder: (BuildContext context, int index) {
             final waktu = data["data"][index]["time"];
             final tahun = waktu.substring(0, 4);
             final bulan = waktu.substring(5, 7);
             final tanggal = waktu.substring(8, 10);
             final jam = waktu.substring(11, 16);
-
+            final image = data["data"][index]["image"];
             final namab = (bulan == "01")
-                ? "Jan"
+                ? "Januari"
                 : (bulan == "02")
-                    ? "Feb"
+                    ? "Februari"
                     : (bulan == "03")
-                        ? "Mar"
+                        ? "Maret"
                         : (bulan == "04")
-                            ? "Apr"
+                            ? "April"
                             : (bulan == "05")
                                 ? "Mei"
                                 : (bulan == "06")
-                                    ? "Jun"
+                                    ? "Juni"
                                     : (bulan == "07")
-                                        ? "Jul"
+                                        ? "Juli"
                                         : (bulan == "08")
-                                            ? "Agst"
+                                            ? "Agustus"
                                             : (bulan == "09")
-                                                ? "Sep"
+                                                ? "September"
                                                 : (bulan == "10")
-                                                    ? "Okt"
+                                                    ? "Oktober"
                                                     : (bulan == "11")
-                                                        ? "Nov"
-                                                        : "Des";
+                                                        ? "November"
+                                                        : "Dessember";
             return Card(
               child: InkWell(
                 splashColor: Colors.blue[300],
                 onTap: () {
-                  final image = data["data"][index]["image"];
                   showDialog(
                     barrierDismissible: true,
                     context: context,
@@ -146,7 +143,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                                             MediaQuery.of(context).size.width /
                                                 23,
                                         fontWeight: FontWeight.w400,
-                                        color: Colors.purpleAccent),
+                                        color: Colors.deepPurple),
                                   ),
                                 ),
                                 Text(
@@ -219,7 +216,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                       Text(
                         data["data"][index]["time"],
                         style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width / 23),
+                            fontSize: MediaQuery.of(context).size.width / 23, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         width: 15,
@@ -228,7 +225,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                         child: Text(data["data"][index]["lokasi"],
                             style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width / 23),
+                                    MediaQuery.of(context).size.width / 23, fontWeight: FontWeight.bold),
                             overflow: TextOverflow.ellipsis),
                       ),
                     ],

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:situsa/Pages/login_page.dart';
+import 'package:situsa/api/api.dart';
 
 class BootScreen extends StatefulWidget {
   @override
@@ -45,9 +46,9 @@ class _BootScreenState extends State<BootScreen> {
   }
 
   startTime() async {
-    var _duration = new Duration(milliseconds: 2354);
+    var _duration = new Duration(milliseconds: 1354);
     try {
-      final result = await InternetAddress.lookup('google.com');
+      final result = await InternetAddress.lookup('www.google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
         print('connected');
         return new Timer(_duration, navigationPage);

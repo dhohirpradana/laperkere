@@ -30,7 +30,15 @@ class _ProfilePageState extends State<ProfilePage> {
       jurusan_pendidikan_terakhir,
       jabatan,
       status_tenaga,
-      unit_kerja;
+      unit_kerja,
+      tahun,
+      bulan,
+      tanggal,
+      namab,
+      tahun1,
+      bulan1,
+      tanggal1,
+      namab1;
 
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -70,6 +78,61 @@ class _ProfilePageState extends State<ProfilePage> {
         status_tenaga = data['status_tenaga'];
         unit_kerja = data['unit_kerja'];
         isLoading = 0;
+
+        tahun = tanggal_lahir.substring(0, 4);
+        bulan = tanggal_lahir.substring(5, 7);
+        tanggal = tanggal_lahir.substring(8, 10);
+
+        tahun1 = tmt_pengangkatan_pertama.substring(0, 4);
+        bulan1 = tmt_pengangkatan_pertama.substring(5, 7);
+        tanggal1 = tmt_pengangkatan_pertama.substring(8, 10);
+
+        namab = (bulan == "01")
+            ? "Januari"
+            : (bulan == "02")
+                ? "Februari"
+                : (bulan == "03")
+                    ? "Maret"
+                    : (bulan == "04")
+                        ? "April"
+                        : (bulan == "05")
+                            ? "Mei"
+                            : (bulan == "06")
+                                ? "Juni"
+                                : (bulan == "07")
+                                    ? "Juli"
+                                    : (bulan == "08")
+                                        ? "Agustus"
+                                        : (bulan == "09")
+                                            ? "September"
+                                            : (bulan == "10")
+                                                ? "Oktober"
+                                                : (bulan == "11")
+                                                    ? "November"
+                                                    : "Dessember";
+        namab1 = (bulan1 == "01")
+            ? "Januari"
+            : (bulan1 == "02")
+                ? "Februari"
+                : (bulan1 == "03")
+                    ? "Maret"
+                    : (bulan1 == "04")
+                        ? "April"
+                        : (bulan1 == "05")
+                            ? "Mei"
+                            : (bulan1 == "06")
+                                ? "Juni"
+                                : (bulan1 == "07")
+                                    ? "Juli"
+                                    : (bulan1 == "08")
+                                        ? "Agustus"
+                                        : (bulan1 == "09")
+                                            ? "September"
+                                            : (bulan1 == "10")
+                                                ? "Oktober"
+                                                : (bulan1 == "11")
+                                                    ? "November"
+                                                    : "Dessember";
       });
     } else {
       setState(() {
@@ -154,7 +217,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               children: <Widget>[
                 Text(
-                  tmt_pengangkatan_pertama,
+                  "$tanggal1 $namab1 $tahun1".toUpperCase(),
                   style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width / 19,
                       fontWeight: FontWeight.bold),
@@ -173,7 +236,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Row(
               children: <Widget>[
                 Text(
-                  "$tempat_lahir, $tanggal_lahir".toUpperCase(),
+                  "$tempat_lahir, $tanggal $namab $tahun".toUpperCase(),
                   style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width / 19,
                       fontWeight: FontWeight.bold),

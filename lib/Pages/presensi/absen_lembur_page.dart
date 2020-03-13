@@ -329,8 +329,6 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
       _imageFile = image;
       _imageList.add(_imageFile);
     });
-    // Closes the bottom sheet
-    // Navigator.pop(context);
   }
 
   Future<Null> _uploadImage() async {
@@ -386,12 +384,13 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
                 });
                 Fluttertoast.showToast(
                     msg: "ANDA SUDAH MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.green.withOpacity(0.9),
                     textColor: Colors.white,
                     fontSize: 16.0);
+                Navigator.pop(context);
                 Navigator.pop(context);
               } else if (value == 1) {
                 setState(() {
@@ -399,17 +398,18 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
                 });
                 Fluttertoast.showToast(
                     msg: "BERHASIL MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.blue.withOpacity(0.9),
                     textColor: Colors.white,
                     fontSize: 16.0);
                 Navigator.pop(context);
+                Navigator.pop(context);
               } else if (value == 0) {
                 Fluttertoast.showToast(
                     msg: "BUKAN MASANYA MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.red.withOpacity(0.9),
@@ -419,7 +419,7 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
               } else {
                 Fluttertoast.showToast(
                     msg: "SISTEM SEDANG MAIN TENIS",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.TOP,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.red.withOpacity(0.9),
@@ -488,7 +488,7 @@ class _PerekamanPageState extends State<PerekamanLemburPage> {
     Img.Image smallerImg = Img.copyResize(image, width: 1000);
 
     var compressImage = await File("$path/FromCamera_$title.jpg")
-      ..writeAsBytesSync(Img.encodeJpg(smallerImg, quality: 85));
+      ..writeAsBytesSync(Img.encodeJpg(smallerImg, quality: 95));
     _image1 = compressImage;
     setState(() {
       _imageList.add(_image1);

@@ -1,9 +1,6 @@
 class BaseUrl {
-  // static String login = "http://192.168.59.1:8000/api/login";
-  // static String rekam = "http://192.168.59.1:8000/api/presensi";
-
   // FOR ANDROID EXT
-
+  static String con = "http://192.168.43.176:8000";
   static String login = "http://192.168.43.176:8000/api/login";
   static String rekam = "http://192.168.43.176:8000/api/presensi";
   static String rekamlembur = "http://192.168.43.176:8000/api/lembur";

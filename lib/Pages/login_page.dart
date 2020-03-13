@@ -51,10 +51,7 @@ class _LoginPageKuState extends State<LoginPageKu> {
   var value;
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-    print(value);
     print(_loginStatus);
-    print("id : $id");
-    print(name);
     setState(() {
       value = preferences.getInt("value");
       _loginStatus = value == 1 ? LoginStatus.signIn : LoginStatus.notSignIn;
@@ -96,8 +93,6 @@ class _LoginPageKuState extends State<LoginPageKu> {
     var content = new Utf8Encoder().convert(pass);
     var md5 = crypto.md5;
     var passmd5 = md5.convert(content);
-    String md5pass = passmd5.toString();
-    // print(passmd5);
 
     Map dataJson = {"no_thl": "$usn", "password": "$content"};
     //encode Map to JSON
@@ -124,10 +119,6 @@ class _LoginPageKuState extends State<LoginPageKu> {
         });
         Navigator.pop(context);
         validationText = "";
-        print(value);
-        print(id);
-        print(name);
-        print(token);
         setState(() {
           validationText = "";
           internetStatusText = "";

@@ -386,12 +386,13 @@ class _PerekamanPageState extends State<PerekamanPage> {
                 });
                 Fluttertoast.showToast(
                     msg: "ANDA SUDAH MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.green.withOpacity(0.9),
                     textColor: Colors.white,
                     fontSize: 16.0);
+                Navigator.pop(context);
                 Navigator.pop(context);
               } else if (value == 1) {
                 setState(() {
@@ -399,17 +400,18 @@ class _PerekamanPageState extends State<PerekamanPage> {
                 });
                 Fluttertoast.showToast(
                     msg: "BERHASIL MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.blue.withOpacity(0.9),
                     textColor: Colors.white,
                     fontSize: 16.0);
                 Navigator.pop(context);
+                Navigator.pop(context);
               } else if (value == 0) {
                 Fluttertoast.showToast(
                     msg: "BUKAN MASANYA MENGISI PRESENSI",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.BOTTOM,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.red.withOpacity(0.9),
@@ -419,7 +421,7 @@ class _PerekamanPageState extends State<PerekamanPage> {
               } else {
                 Fluttertoast.showToast(
                     msg: "SISTEM SEDANG MAIN TENIS",
-                    toastLength: Toast.LENGTH_SHORT,
+                    toastLength: Toast.LENGTH_LONG,
                     gravity: ToastGravity.TOP,
                     timeInSecForIos: 1,
                     backgroundColor: Colors.red.withOpacity(0.9),
@@ -428,15 +430,6 @@ class _PerekamanPageState extends State<PerekamanPage> {
                 Navigator.pop(context);
               }
 
-              // Fluttertoast.showToast(
-              //     msg: "SISTEM SEDANG MAIN TENIS",
-              //     toastLength: Toast.LENGTH_SHORT,
-              //     gravity: ToastGravity.BOTTOM,
-              //     timeInSecForIos: 1,
-              //     backgroundColor: Colors.red.withOpacity(0.9),
-              //     textColor: Colors.white,
-              //     fontSize: 16.0);
-              // Navigator.pop(context);
               final Map<String, dynamic> responseData =
                   json.decode(response.body);
               _resetState();
@@ -488,7 +481,7 @@ class _PerekamanPageState extends State<PerekamanPage> {
     Img.Image smallerImg = Img.copyResize(image, width: 1000);
 
     var compressImage = await File("$path/FromCamera_$title.jpg")
-      ..writeAsBytesSync(Img.encodeJpg(smallerImg, quality: 85));
+      ..writeAsBytesSync(Img.encodeJpg(smallerImg, quality: 95));
     _image1 = compressImage;
     setState(() {
       _imageList.add(_image1);

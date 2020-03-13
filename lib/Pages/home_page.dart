@@ -317,30 +317,6 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                 ),
               ),
             ),
-            // Container(
-            //   child: Draggable(
-            //     child: Container(
-            //       padding: EdgeInsets.only(top: top, left: left),
-            //       child: DragItem(),
-            //     ),
-            //     feedback: Container(
-            //       padding: EdgeInsets.only(top: top, left: left),
-            //       child: DragItem(),
-            //     ),
-            //     childWhenDragging: Container(
-            //       padding: EdgeInsets.only(top: top, left: left),
-            //       child: SizedBox(),
-            //     ),
-            //     onDragCompleted: () {},
-            //     onDragEnd: (drag) {
-            //       setState(() {
-            //         top = top + drag.offset.dy < 0 ? 0 : top + drag.offset.dy;
-            //         left =
-            //             left + drag.offset.dx < 0 ? 0 : left + drag.offset.dx;
-            //       });
-            //     },
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -354,12 +330,12 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: Text("Yakin Logout?"),
+          title: Text("KELUAR ?"),
           // content: new Text("Alert Dialog body"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             FlatButton(
-              child: Text("Batal"),
+              child: Text("BATAL"),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -370,7 +346,7 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
                   signOut();
                 },
                 child: Text(
-                  "Logout",
+                  "KELUAR",
                   style: TextStyle(color: Colors.red),
                 ))
           ],
@@ -391,15 +367,4 @@ class _HalamanUtamaState1 extends State<HalamanUtama> {
   }
 
   DateTime currentBackPressTime;
-}
-
-class DragItem extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      Icons.donut_small,
-      size: MediaQuery.of(context).size.width / 12,
-      color: Colors.redAccent,
-    );
-  }
 }
