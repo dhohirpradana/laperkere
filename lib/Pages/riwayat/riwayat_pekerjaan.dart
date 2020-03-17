@@ -113,6 +113,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                                                     : (bulan == "11")
                                                         ? "November"
                                                         : "Dessember";
+            final image_url = BaseUrl.image;
             return Card(
               child: InkWell(
                 splashColor: Colors.blue[300],
@@ -172,8 +173,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                             ),
                             Flexible(
                               child: Center(
-                                child: Image.network(
-                                    "http://192.168.43.162:8000/storage/presensi/$image"),
+                                child: Image.network("$image_url/$image"),
                               ),
                             ),
                           ],
@@ -216,7 +216,8 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                       Text(
                         data["data"][index]["time"],
                         style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width / 23, fontWeight: FontWeight.bold),
+                            fontSize: MediaQuery.of(context).size.width / 23,
+                            fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
                         width: 15,
@@ -225,7 +226,8 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                         child: Text(data["data"][index]["lokasi"],
                             style: TextStyle(
                                 fontSize:
-                                    MediaQuery.of(context).size.width / 23, fontWeight: FontWeight.bold),
+                                    MediaQuery.of(context).size.width / 23,
+                                fontWeight: FontWeight.bold),
                             overflow: TextOverflow.ellipsis),
                       ),
                     ],
