@@ -113,7 +113,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                                                     : (bulan == "11")
                                                         ? "November"
                                                         : "Dessember";
-            final image_url = BaseUrl.image;
+            final imageurl = BaseUrl.image;
             return Card(
               child: InkWell(
                 splashColor: Colors.blue[300],
@@ -173,7 +173,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                             ),
                             Flexible(
                               child: Center(
-                                child: Image.network("$image_url/$image"),
+                                child: Image.network("$imageurl/$image"),
                               ),
                             ),
                           ],
