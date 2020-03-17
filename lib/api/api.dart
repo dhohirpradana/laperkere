@@ -14,4 +14,5 @@ class BaseUrl {
   // static String profile = "http://192.168.43.176:8000/api/profile";
   // static String riwayat = "http://192.168.43.176:8000/api/lokasi_terkini";
   // static String imageurl = "http://192.168.43.176:8000/storage/presensi/";
+  
 }
