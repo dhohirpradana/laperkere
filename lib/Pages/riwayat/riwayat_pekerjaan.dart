@@ -173,7 +173,7 @@ class _RiwayatKerjaPageState extends State<RiwayatKerjaPage> {
                             Flexible(
                               child: Center(
                                 child: Image.network(
-                                    "http://192.168.43.176:8000/storage/presensi/$image.jpg"),
+                                    "http://192.168.43.162:8000/storage/presensi/$image"),
                               ),
                             ),
                           ],
